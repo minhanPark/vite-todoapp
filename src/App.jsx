@@ -4,6 +4,16 @@ function App() {
   return (
     <div className="wrapper">
       <h1 className="header">Vite Todo App</h1>
+      <div className="form-wrapper">
+        <form className="form">
+          <input
+            className="form-input"
+            type="text"
+            placeholder="할 일을 입력하세요."
+          />
+          <button className="form-button">추가</button>
+        </form>
+      </div>
       <ul>
         <li className="todo-list">
           <p className="todo-list-text">리액트 배우기</p>
