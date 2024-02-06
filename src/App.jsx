@@ -46,11 +46,16 @@ function App() {
     const newTodoList = todoList.filter((todo) => todo.id !== id);
     setTodoList(newTodoList);
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(e);
+  };
   return (
     <div className="wrapper">
       <h1 className="header">Vite Todo App</h1>
       <div className="form-wrapper">
-        <form className="form">
+        <form className="form" onSubmit={handleSubmit}>
           <input
             className="form-input"
             type="text"
