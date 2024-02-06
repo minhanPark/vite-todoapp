@@ -5,6 +5,7 @@ export default function TodoList({
   todoText,
   handleTodoText,
   handleIsEditing,
+  handleDeleteTodo,
 }) {
   return (
     <li className="todo-list">
@@ -26,7 +27,9 @@ export default function TodoList({
             <button onClick={handleIsEditing} className="todo-list-button">
               수정
             </button>
-            <button className="todo-list-button">삭제</button>
+            <button onClick={handleDeleteTodo} className="todo-list-button">
+              삭제
+            </button>
           </div>
         </>
       )}

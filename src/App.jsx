@@ -41,6 +41,11 @@ function App() {
     });
     setTodoList(newTodoList);
   };
+
+  const deleteTodoInList = (id) => {
+    const newTodoList = todoList.filter((todo) => todo.id !== id);
+    setTodoList(newTodoList);
+  };
   return (
     <div className="wrapper">
       <h1 className="header">Vite Todo App</h1>
@@ -62,6 +67,7 @@ function App() {
             todoText={todo.todoText}
             handleTodoText={(e) => handleTodoTextInList(e, todo.id)}
             handleIsEditing={() => handleIsEditingInList(todo.id)}
+            handleDeleteTodo={() => deleteTodoInList(todo.id)}
           />
         ))}
       </ul>
