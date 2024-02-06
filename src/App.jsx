@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 import "./App.css";
 import TodoList from "./components/todo-list";
@@ -49,7 +50,18 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e);
+    //console.log(e);
+    const newTodoText = e.target[0].value;
+    if (newTodoText === "") return;
+    const newTodoList = [
+      {
+        id: uuidv4(),
+        todoText: newTodoText,
+        isEditing: false,
+      },
+      ...todoList,
+    ];
+    setTodoList(newTodoList);
   };
   return (
     <div className="wrapper">
