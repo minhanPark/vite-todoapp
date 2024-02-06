@@ -11,3 +11,20 @@
   color: green;
   border-bottom: 1px solid green;
 }
+
+.todo-list {
+  display: flex;
+  align-items: center;
+}
+
+.todo-list-text {
+  flex: 1;
+}
+
+.todo-list-button {
+  margin-right: 8px;
+}
+
+input.todo-list-text {
+  margin-right: 8px;
+}
