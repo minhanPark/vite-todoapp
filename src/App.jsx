@@ -7,6 +7,12 @@ function App() {
     todoText: "리액트 배우기",
     isEditing: false,
   });
+  const handleIsEditing = () => {
+    setTodo({
+      ...todo,
+      isEditing: !todo.isEditing,
+    });
+  };
   return (
     <div className="wrapper">
       <h1 className="header">Vite Todo App</h1>
@@ -34,7 +40,9 @@ function App() {
             <>
               <p className="todo-list-text">리액트 배우기</p>
               <div className="">
-                <button className="todo-list-button">수정</button>
+                <button onClick={handleIsEditing} className="todo-list-button">
+                  수정
+                </button>
                 <button className="todo-list-button">삭제</button>
               </div>
             </>
