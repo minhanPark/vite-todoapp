@@ -1,6 +1,12 @@
 import "./App.css";
+import { useState } from "react";
 
 function App() {
+  const [todo, setTodo] = useState({
+    id: "uniqueId",
+    todoText: "리액트 배우기",
+    isEditing: false,
+  });
   return (
     <div className="wrapper">
       <h1 className="header">Vite Todo App</h1>
@@ -16,15 +22,23 @@ function App() {
       </div>
       <ul>
         <li className="todo-list">
-          <p className="todo-list-text">리액트 배우기</p>
-          <div className="">
-            <button className="todo-list-button">수정</button>
-            <button className="todo-list-button">삭제</button>
-          </div>
-        </li>
-        <li className="todo-list">
-          <input className="todo-list-text" value="수정할 때 나타나는 텍스트" />
-          <button className="todo-list-button">수정</button>
+          {todo.isEditing ? (
+            <>
+              <input
+                className="todo-list-text"
+                value="수정할 때 나타나는 텍스트"
+              />
+              <button className="todo-list-button">수정</button>
+            </>
+          ) : (
+            <>
+              <p className="todo-list-text">리액트 배우기</p>
+              <div className="">
+                <button className="todo-list-button">수정</button>
+                <button className="todo-list-button">삭제</button>
+              </div>
+            </>
+          )}
         </li>
       </ul>
     </div>
