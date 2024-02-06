@@ -4,11 +4,6 @@ import "./App.css";
 import TodoList from "./components/todo-list";
 
 function App() {
-  const [todo, setTodo] = useState({
-    id: "uniqueId",
-    todoText: "리액트 배우기",
-    isEditing: false,
-  });
   const [todoList, setTodoList] = useState([
     {
       id: "uniqueId1",
@@ -21,12 +16,6 @@ function App() {
       isEditing: false,
     },
   ]);
-  const handleIsEditing = () => {
-    setTodo({
-      ...todo,
-      isEditing: !todo.isEditing,
-    });
-  };
   const handleIsEditingInList = (id) => {
     const newTodoList = todoList.map((todo) => {
       if (todo.id === id) {
@@ -40,11 +29,17 @@ function App() {
     setTodoList(newTodoList);
   };
 
-  const handleTodoText = (e) => {
-    setTodo({
-      ...todo,
-      todoText: e.target.value,
+  const handleTodoTextInList = (e, id) => {
+    const newTodoList = todoList.map((todo) => {
+      if (todo.id === id) {
+        return {
+          ...todo,
+          todoText: e.target.value,
+        };
+      }
+      return todo;
     });
+    setTodoList(newTodoList);
   };
   return (
     <div className="wrapper">
@@ -60,12 +55,15 @@ function App() {
         </form>
       </div>
       <ul>
-        <TodoList
-          isEditing={todo.isEditing}
-          todoText={todo.todoText}
-          handleTodoText={handleTodoText}
-          handleIsEditing={handleIsEditing}
-        />
+        {todoList.map((todo) => (
+          <TodoList
+            key={todo.id}
+            isEditing={todo.isEditing}
+            todoText={todo.todoText}
+            handleTodoText={(e) => handleTodoTextInList(e, todo.id)}
+            handleIsEditing={() => handleIsEditingInList(todo.id)}
+          />
+        ))}
       </ul>
     </div>
   );
