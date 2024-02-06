@@ -9,12 +9,37 @@ function App() {
     todoText: "리액트 배우기",
     isEditing: false,
   });
+  const [todoList, setTodoList] = useState([
+    {
+      id: "uniqueId1",
+      todoText: "리액트 배우기",
+      isEditing: false,
+    },
+    {
+      id: "uniqueId2",
+      todoText: "타입스크립트 배우기",
+      isEditing: false,
+    },
+  ]);
   const handleIsEditing = () => {
     setTodo({
       ...todo,
       isEditing: !todo.isEditing,
     });
   };
+  const handleIsEditingInList = (id) => {
+    const newTodoList = todoList.map((todo) => {
+      if (todo.id === id) {
+        return {
+          ...todo,
+          isEditing: !todo.isEditing,
+        };
+      }
+      return todo;
+    });
+    setTodoList(newTodoList);
+  };
+
   const handleTodoText = (e) => {
     setTodo({
       ...todo,
